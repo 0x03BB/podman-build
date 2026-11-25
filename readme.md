@@ -1,4 +1,4 @@
-# Docker Build
+# Podman Build
 
 This script reads the ".\images.txt" file to determine which repositories to update and build. The format of the file is one image per line, with each line containing 1) the directory/name of the image, 2) the address of the Git repository of the image, and optionally 3) the Docker registry to use. The information *must* be tab delimited (not space). Example:
 

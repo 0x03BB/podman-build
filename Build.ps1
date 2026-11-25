@@ -61,9 +61,9 @@ if (!(Test-Path .\images.txt -PathType Leaf)) {
     exit 1
 }
 
-docker info *> $null
+podman info *> $null
 if (!$?) {
-    Write-ErrorWithLog "Docker is not running. Start Docker and run this script again."
+    Write-ErrorWithLog "Podman is not running. Start Podman and run this script again."
     exit 1
 }
 
@@ -143,14 +143,14 @@ function Build-Image {
     }
 
     if ($UseCache) {
-        docker compose build *> $null
+        podman compose build *> $null
     }
     else {
-        docker compose build --pull --no-cache *> $null
+        podman compose build --pull --no-cache *> $null
     }
     if ($?) {
         Write-InformationWithLog "Build: Success"
-        docker compose push *> $null
+        podman compose push *> $null
         if ($?) {
             Write-InformationWithLog "Push:  Success"
             $success = $true
